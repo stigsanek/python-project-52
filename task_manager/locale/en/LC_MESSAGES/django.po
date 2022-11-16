@@ -29,7 +29,7 @@ msgstr "Users"
 
 #: .\task_manager\templates\base.html:22
 msgid "Вход"
-msgstr "Log in"
+msgstr "Sign in"
 
 #: .\task_manager\templates\base.html:25
 msgid "Регистрация"
