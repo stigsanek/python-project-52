@@ -1,3 +1,9 @@
+locale-make:
+	django-admin makemessages -l en
+
+locale-build:
+	django-admin compilemessages
+
 run:
 	poetry run python manage.py runserver
 
@@ -9,9 +15,6 @@ build:
 
 publish:
 	poetry publish --dry-run
-
-package-install:
-	python3 -m pip install --user dist/*.whl
 
 lint:
 	poetry run flake8 task_manager tests
