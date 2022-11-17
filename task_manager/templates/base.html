@@ -18,12 +18,18 @@
         </li>
       </ul>
       <ul class="navbar-nav">
+        {% if not user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link" href="#">{% translate 'Вход' %}</a>
+          <a class="nav-link" href="{% url 'login' %}">{% translate 'Вход' %}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">{% translate 'Регистрация' %}</a>
         </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">{% translate 'Выход' %}</a>
+        </li>
+        {% endif %}
       </ul>
     </div>
   </nav>
