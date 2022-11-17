@@ -2,8 +2,8 @@ run:
 	poetry run python manage.py runserver
 
 locale-make:
-	poetry run django-admin makemessages -l en
-	poetry run django-admin compilemessages
+	poetry run python manage.py makemessages -l en
+	poetry run python manage.py compilemessages
 
 migrate:
 	poetry run python manage.py makemigrations
