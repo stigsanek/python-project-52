@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-17 12:38+0400\n"
+"POT-Creation-Date: 2022-11-17 23:08+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,27 +18,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\templates\base.html:5 .\templates\base.html:10 .\templates\home.html:7
+#: .\task_manager\templates\base.html:5 .\task_manager\templates\base.html:10
+#: .\task_manager\templates\home.html:7
 msgid "Менеджер задач"
 msgstr "Task manager"
 
-#: .\templates\base.html:17 .\templates\users\list.html:5
+#: .\task_manager\templates\base.html:17
+#: .\task_manager\templates\users\list.html:5
 msgid "Пользователи"
 msgstr "Users"
 
-#: .\templates\base.html:23 .\templates\users\sign_in.html:6
+#: .\task_manager\templates\base.html:23
+#: .\task_manager\templates\users\sign_in.html:6
 msgid "Вход"
 msgstr "Sign in"
 
-#: .\templates\base.html:26
+#: .\task_manager\templates\base.html:26
+#: .\task_manager\templates\users\create.html:6
 msgid "Регистрация"
 msgstr "Sign up"
 
-#: .\templates\base.html:30
+#: .\task_manager\templates\base.html:30
 msgid "Выход"
 msgstr "Sign out"
 
-#: .\templates\home.html:9
+#: .\task_manager\templates\home.html:9
 msgid ""
 "Это система управления задачами. Она позволяет ставить задачи, назначать "
 "исполнителей и изменять их статусы. Для работы с системой требуется "
@@ -48,40 +52,50 @@ msgstr ""
 "and change their statuses. Registration and authentication are required to "
 "work with the system."
 
-#: .\templates\home.html:13
+#: .\task_manager\templates\home.html:13
 msgid "Исходный код"
 msgstr "Source code"
 
-#: .\templates\users\list.html:11
+#: .\task_manager\templates\users\create.html:10
+#, fuzzy
+#| msgid "Регистрация"
+msgid "Зарегистрировать"
+msgstr "Sign up"
+
+#: .\task_manager\templates\users\list.html:11
 #, fuzzy
 #| msgid "Пользователи"
 msgid "Имя пользователя"
 msgstr "Users"
 
-#: .\templates\users\list.html:12
+#: .\task_manager\templates\users\list.html:12
 msgid "Полное имя"
 msgstr "Full name"
 
-#: .\templates\users\list.html:13
+#: .\task_manager\templates\users\list.html:13
 msgid "Дата создания"
 msgstr "Date of creation"
 
-#: .\templates\users\list.html:25
+#: .\task_manager\templates\users\list.html:25
 msgid "Изменить"
 msgstr "Change"
 
-#: .\templates\users\list.html:26
+#: .\task_manager\templates\users\list.html:26
 msgid "Удалить"
 msgstr "Delete"
 
-#: .\templates\users\sign_in.html:10
+#: .\task_manager\templates\users\sign_in.html:10
 msgid "Войти"
 msgstr "Sign in"
 
-#: .\users\views.py:23
+#: .\task_manager\users\views.py:23
 msgid "Вы залогинены"
 msgstr "You are logged in"
 
-#: .\users\views.py:29
+#: .\task_manager\users\views.py:29
 msgid "Вы разлогинены"
 msgstr "You are logged out"
+
+#: .\task_manager\users\views.py:46
+msgid "Пользователь успешно зарегистрирован"
+msgstr "User is successfully registered"
