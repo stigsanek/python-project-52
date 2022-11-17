@@ -4,6 +4,9 @@ locale-make:
 locale-build:
 	django-admin compilemessages
 
+migrate:
+	poetry run python manage.py migrate
+
 run:
 	poetry run python manage.py runserver
 
