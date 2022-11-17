@@ -4,4 +4,5 @@ from task_manager.users import views
 
 urlpatterns = [
     path('', views.UserListView.as_view(), name='list'),
+    path('create/', views.CreateUserView.as_view(), name='create'),
 ]
