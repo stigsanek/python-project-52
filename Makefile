@@ -20,7 +20,7 @@ publish:
 	poetry publish --dry-run
 
 lint:
-	poetry run flake8 task_manager tests
+	poetry run flake8 task_manager
 
 test:
 	poetry run pytest
