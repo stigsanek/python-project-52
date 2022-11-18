@@ -4,10 +4,12 @@ from django.contrib.messages import info
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from task_manager.mixins import CheckSignInMixin, CheckUpdateMixin
 from task_manager.users.forms import CreateUserForm
+
+ERROR_MSG = _('У вас нет прав для изменения другого пользователя.')
 
 
 class UserListView(ListView):
@@ -56,5 +58,20 @@ class UpdateUserView(
     template_name = 'users/update.html'
     success_message = _('Пользователь успешно изменён')
     success_url = reverse_lazy('users:list')
-    error_message = _('У вас нет прав для изменения другого пользователя.')
+    error_message = ERROR_MSG
+    error_url = success_url
+
+
+class DeleteUserView(
+    CheckSignInMixin,
+    CheckUpdateMixin,
+    SuccessMessageMixin,
+    DeleteView
+):
+    """Delete user"""
+    model = User
+    template_name = 'users/delete.html'
+    success_message = _('Пользователь успешно удалён')
+    success_url = reverse_lazy('users:list')
+    error_message = ERROR_MSG
     error_url = success_url

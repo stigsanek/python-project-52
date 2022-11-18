@@ -95,3 +95,26 @@ class TestUsers(TestCase):
 
         user = User.objects.filter(username='test').first()
         self.assertIsNotNone(user)
+
+    def test_delete_user(self):
+        """Test for delete user"""
+        del_url_first = reverse('users:delete', args=[self.first_user.id])
+        del_url_second = reverse('users:delete', args=[self.second_user.id])
+
+        resp = self.client.get(del_url_first)
+        self.assertEqual(resp.status_code, 302)
+        self.assertRedirects(resp, reverse('login'))
+
+        self.client.force_login(self.first_user)
+
+        resp = self.client.get(del_url_second)
+        self.assertEqual(resp.status_code, 302)
+        self.assertRedirects(resp, reverse('users:list'))
+
+        resp = self.client.post(path=del_url_first, follow=True)
+        self.assertEqual(resp.status_code, 200)
+        self.assertContains(resp, 'Пользователь успешно удалён')
+        self.assertContains(resp, 'Вход')
+
+        user = User.objects.filter(username='test').first()
+        self.assertIsNone(user)
