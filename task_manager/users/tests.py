@@ -116,5 +116,5 @@ class TestUsers(TestCase):
         self.assertContains(resp, 'Пользователь успешно удалён')
         self.assertContains(resp, 'Вход')
 
-        user = User.objects.filter(username='test').first()
-        self.assertIsNone(user)
+        with self.assertRaises(User.DoesNotExist):
+            User.objects.get(pk=self.first_user.id)
