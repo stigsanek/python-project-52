@@ -65,3 +65,33 @@ class TestUsers(TestCase):
 
         user = User.objects.filter(username='test').first()
         self.assertIsNotNone(user)
+
+    def test_update_user(self):
+        """Test for update user"""
+        upd_url_first = reverse('users:update', args=[self.first_user.id])
+        upd_url_second = reverse('users:update', args=[self.second_user.id])
+
+        resp = self.client.get(upd_url_first)
+        self.assertEqual(resp.status_code, 302)
+        self.assertRedirects(resp, reverse('login'))
+
+        self.client.force_login(self.first_user)
+
+        resp = self.client.get(upd_url_second)
+        self.assertEqual(resp.status_code, 302)
+        self.assertRedirects(resp, reverse('users:list'))
+
+        resp = self.client.post(
+            path=upd_url_first,
+            data={
+                'username': 'test',
+                'password1': FAKE_PASSWORD,
+                'password2': FAKE_PASSWORD,
+            },
+            follow=True
+        )
+        self.assertEqual(resp.status_code, 200)
+        self.assertContains(resp, 'Пользователь успешно изменён')
+
+        user = User.objects.filter(username='test').first()
+        self.assertIsNotNone(user)

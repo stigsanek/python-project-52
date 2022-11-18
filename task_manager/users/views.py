@@ -1,11 +1,12 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
-from django.contrib.messages import add_message, SUCCESS
+from django.contrib.messages import info
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView
 
+from task_manager.mixins import CheckSignInMixin, CheckUpdateMixin
 from task_manager.users.forms import CreateUserForm
 
 
@@ -30,11 +31,7 @@ class SignOutView(SuccessMessageMixin, LogoutView):
     next_page = reverse_lazy('home')
 
     def dispatch(self, request, *args, **kwargs):
-        add_message(
-            request=request,
-            level=SUCCESS,
-            message=self.success_message
-        )
+        info(request, self.success_message)
         return super().dispatch(request, *args, **kwargs)
 
 
@@ -45,3 +42,19 @@ class CreateUserView(SuccessMessageMixin, CreateView):
     template_name = 'users/create.html'
     success_message = _('Пользователь успешно зарегистрирован')
     success_url = reverse_lazy('login')
+
+
+class UpdateUserView(
+    CheckSignInMixin,
+    CheckUpdateMixin,
+    SuccessMessageMixin,
+    UpdateView
+):
+    """Update user"""
+    model = User
+    form_class = CreateUserForm
+    template_name = 'users/update.html'
+    success_message = _('Пользователь успешно изменён')
+    success_url = reverse_lazy('users:list')
+    error_message = _('У вас нет прав для изменения другого пользователя.')
+    error_url = success_url
