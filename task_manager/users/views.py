@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from task_manager.mixins import CheckSignInMixin, CheckUpdateMixin
-from task_manager.users.forms import CreateUserForm
+from task_manager.users.forms import UserForm
 
 ERROR_MSG = _('У вас нет прав для изменения другого пользователя.')
 
@@ -40,7 +40,7 @@ class SignOutView(SuccessMessageMixin, LogoutView):
 class CreateUserView(SuccessMessageMixin, CreateView):
     """Create user"""
     model = User
-    form_class = CreateUserForm
+    form_class = UserForm
     template_name = 'users/create.html'
     success_message = _('Пользователь успешно зарегистрирован')
     success_url = reverse_lazy('login')
@@ -54,7 +54,7 @@ class UpdateUserView(
 ):
     """Update user"""
     model = User
-    form_class = CreateUserForm
+    form_class = UserForm
     template_name = 'users/update.html'
     success_message = _('Пользователь успешно изменён')
     success_url = reverse_lazy('users:list')
