@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-17 23:08+0400\n"
+"POT-Creation-Date: 2022-11-20 23:20+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,41 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\task_manager\mixins.py:15
+msgid "Вы не авторизованы! Пожалуйста, выполните вход."
+msgstr "You are not logged in! Please log in."
+
+#: .\task_manager\statuses\apps.py:8 .\task_manager\statuses\models.py:17
+#: .\task_manager\templates\base.html:21
+#: .\task_manager\templates\statuses\list.html:5
+msgid "Статусы"
+msgstr "Statuses"
+
+#: .\task_manager\statuses\forms.py:13
+#: .\task_manager\templates\statuses\list.html:12
+msgid "Имя"
+msgstr "Name"
+
+#: .\task_manager\statuses\models.py:10
+msgid "Обязательное поле. Не более 150 символов."
+msgstr "Required field. No more than 150 characters."
+
+#: .\task_manager\statuses\models.py:16
+msgid "Статус"
+msgstr "Status"
+
+#: .\task_manager\statuses\views.py:23
+msgid "Статус успешно создан"
+msgstr "Status successfully created"
+
+#: .\task_manager\statuses\views.py:32
+msgid "Статус успешно изменён"
+msgstr "Status successfully changed"
+
+#: .\task_manager\statuses\views.py:40
+msgid "Статус успешно удалён"
+msgstr "Status successfully deleted"
 
 #: .\task_manager\templates\base.html:5 .\task_manager\templates\base.html:10
 #: .\task_manager\templates\home.html:7
@@ -28,17 +63,17 @@ msgstr "Task manager"
 msgid "Пользователи"
 msgstr "Users"
 
-#: .\task_manager\templates\base.html:23
+#: .\task_manager\templates\base.html:28
 #: .\task_manager\templates\users\sign_in.html:6
 msgid "Вход"
 msgstr "Sign in"
 
-#: .\task_manager\templates\base.html:26
+#: .\task_manager\templates\base.html:31
 #: .\task_manager\templates\users\create.html:6
 msgid "Регистрация"
 msgstr "Sign up"
 
-#: .\task_manager\templates\base.html:30
+#: .\task_manager\templates\base.html:35
 msgid "Выход"
 msgstr "Sign out"
 
@@ -56,46 +91,110 @@ msgstr ""
 msgid "Исходный код"
 msgstr "Source code"
 
+#: .\task_manager\templates\statuses\create.html:6
+#: .\task_manager\templates\statuses\list.html:6
+msgid "Создать статус"
+msgstr "Create a status"
+
+#: .\task_manager\templates\statuses\create.html:10
+msgid "Создать"
+msgstr "Create"
+
+#: .\task_manager\templates\statuses\delete.html:6
+msgid "Удаление статуса"
+msgstr "Deleting a status"
+
+#: .\task_manager\templates\statuses\delete.html:7
+#: .\task_manager\templates\users\delete.html:7
+msgid "Вы уверены, что хотите удалить"
+msgstr "Are you sure you want to delete"
+
+#: .\task_manager\templates\statuses\delete.html:10
+#: .\task_manager\templates\users\delete.html:10
+#, fuzzy
+#| msgid "Удалить"
+msgid "Да, удалить"
+msgstr "Yes, remove"
+
+#: .\task_manager\templates\statuses\list.html:13
+#: .\task_manager\templates\users\list.html:13
+msgid "Дата создания"
+msgstr "Date of creation"
+
+#: .\task_manager\templates\statuses\list.html:24
+#: .\task_manager\templates\statuses\update.html:10
+#: .\task_manager\templates\users\list.html:25
+#: .\task_manager\templates\users\update.html:10
+msgid "Изменить"
+msgstr "Change"
+
+#: .\task_manager\templates\statuses\list.html:25
+#: .\task_manager\templates\users\list.html:26
+msgid "Удалить"
+msgstr "Delete"
+
+#: .\task_manager\templates\statuses\update.html:6
+#, fuzzy
+#| msgid "Изменить"
+msgid "Изменение статуса"
+msgstr "Changing status"
+
 #: .\task_manager\templates\users\create.html:10
 #, fuzzy
 #| msgid "Регистрация"
 msgid "Зарегистрировать"
 msgstr "Sign up"
 
+#: .\task_manager\templates\users\delete.html:6
+#, fuzzy
+#| msgid "Пользователи"
+msgid "Удаление пользователя"
+msgstr "Deleting a user"
+
 #: .\task_manager\templates\users\list.html:11
 #, fuzzy
 #| msgid "Пользователи"
 msgid "Имя пользователя"
-msgstr "Users"
+msgstr "Username"
 
 #: .\task_manager\templates\users\list.html:12
 msgid "Полное имя"
 msgstr "Full name"
 
-#: .\task_manager\templates\users\list.html:13
-msgid "Дата создания"
-msgstr "Date of creation"
-
-#: .\task_manager\templates\users\list.html:25
-msgid "Изменить"
-msgstr "Change"
-
-#: .\task_manager\templates\users\list.html:26
-msgid "Удалить"
-msgstr "Delete"
-
 #: .\task_manager\templates\users\sign_in.html:10
 msgid "Войти"
 msgstr "Sign in"
 
-#: .\task_manager\users\views.py:23
+#: .\task_manager\templates\users\update.html:6
+#, fuzzy
+#| msgid "Пользователи"
+msgid "Изменение пользователя"
+msgstr "Changing the user"
+
+#: .\task_manager\users\views.py:12
+msgid "У вас нет прав для изменения другого пользователя."
+msgstr "You have no rights to change another user."
+
+#: .\task_manager\users\views.py:26
 msgid "Вы залогинены"
 msgstr "You are logged in"
 
-#: .\task_manager\users\views.py:29
+#: .\task_manager\users\views.py:32
 msgid "Вы разлогинены"
 msgstr "You are logged out"
 
-#: .\task_manager\users\views.py:46
+#: .\task_manager\users\views.py:45
 msgid "Пользователь успешно зарегистрирован"
 msgstr "User is successfully registered"
+
+#: .\task_manager\users\views.py:59
+#, fuzzy
+#| msgid "Пользователь успешно зарегистрирован"
+msgid "Пользователь успешно изменён"
+msgstr "User successfully changed"
+
+#: .\task_manager\users\views.py:74
+#, fuzzy
+#| msgid "Пользователь успешно зарегистрирован"
+msgid "Пользователь успешно удалён"
+msgstr "User successfully deleted"
