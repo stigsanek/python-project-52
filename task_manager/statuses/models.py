@@ -8,14 +8,20 @@ class Status(models.Model):
         max_length=150,
         unique=True,
         help_text=_('Обязательное поле. Не более 150 символов.'),
-        verbose_name=_('Имя')
+        verbose_name=_('имя')
     )
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name=_('дата создания')
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        verbose_name=_('дата обновления')
+    )
 
     class Meta:
-        verbose_name = _('Статус')
-        verbose_name_plural = _('Статусы')
+        verbose_name = _('статус')
+        verbose_name_plural = _('статусы')
 
     def __str__(self):
         return self.name
