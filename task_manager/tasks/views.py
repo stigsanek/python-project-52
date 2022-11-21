@@ -56,11 +56,13 @@ class DeleteTaskView(CheckSignInMixin, SuccessMessageMixin, DeleteView):
     success_message = _('Задача успешно удалена')
     success_url = reverse_lazy('tasks:list')
 
-    def dispatch(self, request, *args, **kwargs):
+    def form_valid(self, form):
         if self.request.user != self.get_object().author:
             error(
-                request,
+                self.request,
                 _('Задачу может удалить только её автор')
             )
-            return redirect(reverse_lazy('tasks:list'))
-        return super().dispatch(request, *args, **kwargs)
+        else:
+            super().form_valid(form)
+
+        return redirect(self.success_url)

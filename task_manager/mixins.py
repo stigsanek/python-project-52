@@ -1,6 +1,5 @@
 from django.contrib.messages import error, success
 from django.db.models import ProtectedError
-from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
@@ -48,4 +47,4 @@ class DeleteRelatedEntityMixin:
             success(self.request, self.success_message)
 
         success_url = self.get_success_url()
-        return HttpResponseRedirect(success_url)
+        return redirect(success_url)
