@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<h1 class="my-4">{% translate 'Задачи' %}</h1>
+<a class="nav-link" href="{% url 'tasks:create' %}">{% translate 'Создать задачу' %}</a>
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>{% translate 'Имя' %}</th>
+      <th>{% translate 'Статус' %}</th>
+      <th>{% translate 'Автор' %}</th>
+      <th>{% translate 'Исполнитель' %}</th>
+      <th>{% translate 'Дата создания' %}</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for task in tasks %}
+    <tr>
+      <th>{{ task.id }}</th>
+      <td><a href="{% url 'tasks:detail' task.id %}">{{ task.name }}</a></td>
+      <td>{{ task.status }}</td>
+      <td>{{ task.author }}</td>
+      <td>{% if task.executor %}{{ task.executor }}{% endif %}</td>
+      <td>{{ task.created_at | date:'d.m.Y H:i' }}</td>
+      <td>
+        <a href="{% url 'tasks:update' task.id %}">{% translate 'Изменить' %}</a><br>
+        <a href="{% url 'tasks:delete' task.id %}">{% translate 'Удалить' %}</a>
+      </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
