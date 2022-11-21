@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Status',
+            name='Label',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(help_text='Обязательное поле. Не более 150 символов.', max_length=150, unique=True, verbose_name='имя')),
@@ -20,8 +20,8 @@ class Migration(migrations.Migration):
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='дата обновления')),
             ],
             options={
-                'verbose_name': 'статус',
-                'verbose_name_plural': 'статусы',
+                'verbose_name': 'метка',
+                'verbose_name_plural': 'метки',
             },
         ),
     ]
