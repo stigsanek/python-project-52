@@ -13,7 +13,7 @@ from task_manager.tasks.forms import TaskForm
 from task_manager.tasks.models import Task
 
 
-class TaskListView(CheckSignInMixin, ListView):
+class ListTaskView(CheckSignInMixin, ListView):
     """All tasks"""
     model = Task
     template_name = 'tasks/list.html'

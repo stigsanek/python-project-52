@@ -8,7 +8,7 @@ from task_manager.statuses.forms import StatusForm
 from task_manager.statuses.models import Status
 
 
-class StatusListView(CheckSignInMixin, ListView):
+class ListStatusView(CheckSignInMixin, ListView):
     """All statuses"""
     model = Status
     template_name = 'statuses/list.html'

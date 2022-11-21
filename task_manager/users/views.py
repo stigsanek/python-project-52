@@ -10,7 +10,7 @@ from task_manager.mixins import CheckSignInMixin, ChangeUserMixin
 from task_manager.users.forms import UserForm
 
 
-class UserListView(ListView):
+class ListUserView(ListView):
     """All users"""
     model = User
     template_name = 'users/list.html'
