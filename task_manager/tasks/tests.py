@@ -11,7 +11,6 @@ class TestTasks(TestCase):
     def setUp(self):
         self.first_user = User.objects.get(pk=1)
         self.second_user = User.objects.get(pk=2)
-        self.tasks = Task.objects.all()
         self.first_task = Task.objects.get(pk=1)
         self.second_task = Task.objects.get(pk=3)
 
@@ -29,7 +28,7 @@ class TestTasks(TestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertQuerysetEqual(
             qs=resp.context['tasks'],
-            values=self.tasks,
+            values=Task.objects.all(),
             ordered=False
         )
 

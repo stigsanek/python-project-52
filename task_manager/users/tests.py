@@ -9,7 +9,6 @@ class TestUsers(TestCase):
     fixtures = ['users.json', 'statuses.json', 'tasks.json']
 
     def setUp(self):
-        self.users = User.objects.all()
         self.first_user = User.objects.get(pk=1)
         self.second_user = User.objects.get(pk=2)
         self.third_user = User.objects.get(pk=3)
@@ -21,7 +20,7 @@ class TestUsers(TestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertQuerysetEqual(
             qs=resp.context['users'],
-            values=self.users,
+            values=User.objects.all(),
             ordered=False
         )
 

@@ -10,7 +10,6 @@ class TestStatuses(TestCase):
 
     def setUp(self):
         self.user = User.objects.get(pk=1)
-        self.statuses = Status.objects.all()
         self.first_status = Status.objects.get(pk=1)
         self.second_status = Status.objects.get(pk=3)
 
@@ -28,7 +27,7 @@ class TestStatuses(TestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertQuerysetEqual(
             qs=resp.context['statuses'],
-            values=self.statuses,
+            values=Status.objects.all(),
             ordered=False
         )
 
