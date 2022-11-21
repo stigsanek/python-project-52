@@ -49,13 +49,26 @@ It remains to move to the directory and install the dependencies:
 >> poetry install
 ```
 
+### Environment
+
+For the application to work, you need to create a file `.env` in the root of the project.
+Then open the file and set any value for the `SECRET_KEY="your_key"`
+If you want to enable debug mode, then set for the `DEBUG=1`.
+
+### Migrations
+
+To apply all migrations, run:
+
+```bash
+>> poetry run python manage.py makemigrations
+>> poetry run python manage.py migrate
+```
+
 Finally, we can move on to using the project functionality!
 
 ## Usage
 
 ```bash
->> poetry run python manage.py makemigrations
->> poetry run python manage.py migrate
 >> poetry run python manage.py runserver
 
 Watching for file changes with StatReloader
