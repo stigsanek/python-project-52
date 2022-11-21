@@ -7,7 +7,8 @@ class Status(models.Model):
     name = models.CharField(
         max_length=150,
         unique=True,
-        help_text=_('Обязательное поле. Не более 150 символов.')
+        help_text=_('Обязательное поле. Не более 150 символов.'),
+        verbose_name=_('Имя')
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -17,4 +18,4 @@ class Status(models.Model):
         verbose_name_plural = _('Статусы')
 
     def __str__(self):
-        return self.__class__.name
+        return self.name
