@@ -1,0 +1,41 @@
+[
+  {
+    "model": "tasks.task",
+    "pk": 1,
+    "fields": {
+      "name": "Riding the dragon",
+      "description": "Riding the dragon",
+      "status": 1,
+      "author": 1,
+      "executor": 2,
+      "created_at": "2022-11-21T10:26:33.006Z",
+      "updated_at": "2022-11-21T10:45:34.148Z"
+    }
+  },
+  {
+    "model": "tasks.task",
+    "pk": 2,
+    "fields": {
+      "name": "Execute the pinky",
+      "description": "Execute the pinky",
+      "status": 2,
+      "author": 1,
+      "executor": 2,
+      "created_at": "2022-11-21T10:46:28.755Z",
+      "updated_at": "2022-11-21T10:46:28.755Z"
+    }
+  },
+  {
+    "model": "tasks.task",
+    "pk": 3,
+    "fields": {
+      "name": "Protect Winterfell",
+      "description": "Protect Winterfell",
+      "status": 2,
+      "author": 2,
+      "executor": 1,
+      "created_at": "2022-11-21T10:48:00.872Z",
+      "updated_at": "2022-11-21T10:48:00.872Z"
+    }
+  }
+]

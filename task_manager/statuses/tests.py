@@ -6,12 +6,13 @@ from task_manager.statuses.models import Status
 
 
 class TestStatuses(TestCase):
-    fixtures = ['statuses.json', 'users.json']
+    fixtures = ['users.json', 'statuses.json', 'tasks.json']
 
     def setUp(self):
         self.user = User.objects.get(pk=1)
         self.statuses = Status.objects.all()
-        self.status = Status.objects.get(pk=1)
+        self.first_status = Status.objects.get(pk=1)
+        self.second_status = Status.objects.get(pk=3)
 
     def test_status_list(self):
         """Test for status list page"""
@@ -44,13 +45,13 @@ class TestStatuses(TestCase):
         resp = self.client.post(path=url, data={'name': 'test'}, follow=True)
         self.assertEqual(resp.status_code, 200)
         self.assertContains(resp, 'Статус успешно создан')
-
-        status = Status.objects.filter(name='test').first()
-        self.assertIsNotNone(status)
+        self.assertTrue(
+            Status.objects.filter(name='test').exists()
+        )
 
     def test_update_status(self):
         """Test for update status"""
-        url = reverse('statuses:update', args=[self.status.id])
+        url = reverse('statuses:update', args=[self.first_status.id])
 
         resp = self.client.get(url)
         self.assertEqual(resp.status_code, 302)
@@ -61,13 +62,13 @@ class TestStatuses(TestCase):
         resp = self.client.post(path=url, data={'name': 'test'}, follow=True)
         self.assertEqual(resp.status_code, 200)
         self.assertContains(resp, 'Статус успешно изменён')
-
-        status = Status.objects.filter(name='test').first()
-        self.assertIsNotNone(status)
+        self.assertTrue(
+            Status.objects.filter(name='test').exists()
+        )
 
     def test_delete_status(self):
         """Test for delete status"""
-        url = reverse('statuses:delete', args=[self.status.id])
+        url = reverse('statuses:delete', args=[self.second_status.id])
 
         resp = self.client.get(url)
         self.assertEqual(resp.status_code, 302)
@@ -80,4 +81,18 @@ class TestStatuses(TestCase):
         self.assertContains(resp, 'Статус успешно удалён')
 
         with self.assertRaises(Status.DoesNotExist):
-            Status.objects.get(pk=self.status.id)
+            Status.objects.get(pk=self.second_status.id)
+
+    def test_delete_with_tasks(self):
+        """Test for delete status with tasks"""
+        url = reverse('statuses:delete', args=[self.first_status.id])
+        self.client.force_login(self.user)
+
+        resp = self.client.post(path=url, follow=True)
+        self.assertContains(
+            resp,
+            'Невозможно удалить статус, потому что он используется'
+        )
+        self.assertTrue(
+            Status.objects.filter(pk=self.first_status.id).exists()
+        )

@@ -4,17 +4,26 @@
     "pk": 1,
     "fields": {
       "name": "New",
-      "created_at": "2022-11-20T19:33:27.541Z",
-      "updated_at": "2022-11-20T19:33:27.541Z"
+      "created_at": "2022-11-21T10:24:56.854Z",
+      "updated_at": "2022-11-21T10:24:56.854Z"
     }
   },
   {
     "model": "statuses.status",
     "pk": 2,
     "fields": {
+      "name": "In Work",
+      "created_at": "2022-11-21T10:25:03.506Z",
+      "updated_at": "2022-11-21T10:25:03.506Z"
+    }
+  },
+  {
+    "model": "statuses.status",
+    "pk": 3,
+    "fields": {
       "name": "Completed",
-      "created_at": "2022-11-20T19:33:39.978Z",
-      "updated_at": "2022-11-20T19:33:39.978Z"
+      "created_at": "2022-11-21T10:25:08.603Z",
+      "updated_at": "2022-11-21T10:25:08.603Z"
     }
   }
 ]
