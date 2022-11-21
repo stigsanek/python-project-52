@@ -61,5 +61,6 @@ class Task(models.Model):
 
 
 class TaskLabel(models.Model):
+    """Through model for Task and Label"""
     task = models.ForeignKey(to=Task, on_delete=models.CASCADE)
     label = models.ForeignKey(to=Label, on_delete=models.PROTECT)
