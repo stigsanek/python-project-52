@@ -19,14 +19,15 @@ class CheckSignInMixin(AccessMixin):
         return super().dispatch(request, *args, **kwargs)
 
 
-class CheckUpdateMixin(AccessMixin):
-    """Custom mixin for update entity"""
-    error_message = None
-    error_url = None
+class ChangeUserMixin(AccessMixin):
+    """Custom mixin for update or delete user"""
 
     def dispatch(self, request, *args, **kwargs):
         if request.user != self.get_object():
-            error(request, self.error_message)
-            return redirect(self.error_url)
+            error(
+                request,
+                _('У вас нет прав для изменения другого пользователя.')
+            )
+            return redirect(reverse_lazy('users:list'))
 
         return super().dispatch(request, *args, **kwargs)
