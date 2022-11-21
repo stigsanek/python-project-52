@@ -6,7 +6,9 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
-from task_manager.mixins import CheckSignInMixin, ChangeUserMixin
+from task_manager.mixins import (
+    CheckSignInMixin, ChangeUserMixin, DeleteRelatedEntityMixin
+)
 from task_manager.users.forms import UserForm
 
 
@@ -61,11 +63,14 @@ class UpdateUserView(
 class DeleteUserView(
     CheckSignInMixin,
     ChangeUserMixin,
-    SuccessMessageMixin,
+    DeleteRelatedEntityMixin,
     DeleteView
 ):
     """Delete user"""
     model = User
     template_name = 'users/delete.html'
     success_message = _('Пользователь успешно удалён')
+    error_message = _(
+        'Невозможно удалить пользователя, потому что он используется'
+    )
     success_url = reverse_lazy('users:list')

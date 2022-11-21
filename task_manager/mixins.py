@@ -1,11 +1,12 @@
-from django.contrib.auth.mixins import AccessMixin
-from django.contrib.messages import error
+from django.contrib.messages import error, success
+from django.db.models import ProtectedError
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
 
-class CheckSignInMixin(AccessMixin):
+class CheckSignInMixin:
     """Custom mixin for sign in user"""
 
     def dispatch(self, request, *args, **kwargs):
@@ -19,7 +20,7 @@ class CheckSignInMixin(AccessMixin):
         return super().dispatch(request, *args, **kwargs)
 
 
-class ChangeUserMixin(AccessMixin):
+class ChangeUserMixin:
     """Custom mixin for update or delete user"""
 
     def dispatch(self, request, *args, **kwargs):
@@ -31,3 +32,20 @@ class ChangeUserMixin(AccessMixin):
             return redirect(reverse_lazy('users:list'))
 
         return super().dispatch(request, *args, **kwargs)
+
+
+class DeleteRelatedEntityMixin:
+    """Custom mixin for delete related entities"""
+    error_message = ''
+    success_message = ''
+
+    def form_valid(self, form):
+        try:
+            self.object.delete()
+        except ProtectedError:
+            error(self.request, self.error_message)
+        else:
+            success(self.request, self.success_message)
+
+        success_url = self.get_success_url()
+        return HttpResponseRedirect(success_url)

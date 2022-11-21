@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
-from task_manager.mixins import CheckSignInMixin
+from task_manager.mixins import CheckSignInMixin, DeleteRelatedEntityMixin
 from task_manager.statuses.forms import StatusForm
 from task_manager.statuses.models import Status
 
@@ -33,9 +33,10 @@ class UpdateStatusView(CheckSignInMixin, SuccessMessageMixin, UpdateView):
     success_url = reverse_lazy('statuses:list')
 
 
-class DeleteStatusView(CheckSignInMixin, SuccessMessageMixin, DeleteView):
+class DeleteStatusView(CheckSignInMixin, DeleteRelatedEntityMixin, DeleteView):
     """Delete status"""
     model = Status
     template_name = 'statuses/delete.html'
     success_message = _('Статус успешно удалён')
+    error_message = _('Невозможно удалить статус, потому что он используется')
     success_url = reverse_lazy('statuses:list')
