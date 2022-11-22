@@ -1,9 +1,19 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% load i18n %}
 
 {% block content %}
 <h1 class="my-4">{% translate 'Задачи' %}</h1>
 <a class="nav-link" href="{% url 'tasks:create' %}">{% translate 'Создать задачу' %}</a>
+<div class="card mb-3">
+  <div class="card-body bg-light">
+    <form method="GET">
+      {% bootstrap_form filter.form bound_css_class='' %}
+      <button class="btn btn-primary" type="submit">{% translate 'Показать' %}</button>
+      <a class="btn btn-primary" href="{% url 'tasks:list' %}">{% translate 'Сбросить' %}</a>
+    </form>
+  </div>
+</div>
 <div class="table-responsive">
   <table class="table table-hover">
     <thead>
