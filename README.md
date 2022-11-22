@@ -81,6 +81,8 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CTRL-BREAK.
 ```
 
+Open [http://localhost:8000](http://localhost:8000) in your browser.
+
 ## Development
 
 ### Useful commands
