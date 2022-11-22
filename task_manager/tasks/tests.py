@@ -111,3 +111,34 @@ class TestTasks(TestCase):
         self.assertTrue(
             Task.objects.filter(pk=self.task.id).exists()
         )
+
+    def test_filter(self):
+        """Test for filter tasks"""
+        url = reverse('tasks:list')
+        self.client.force_login(self.first_user)
+
+        resp = self.client.get(f'{url}?status=1')
+        self.assertQuerysetEqual(
+            qs=resp.context['tasks'],
+            values=Task.objects.filter(status_id=1),
+            ordered=False
+        )
+
+        resp = self.client.get(f'{url}?label=1')
+        self.assertQuerysetEqual(
+            qs=resp.context['tasks'],
+            values=Task.objects.filter(labels__id=1),
+            ordered=False
+        )
+
+        resp = self.client.get(f'{url}??status=1&label=1&self_tasks=on')
+        task_qs = Task.objects.filter(
+            status_id=1,
+            labels__id=1,
+            author_id=self.first_user.id
+        )
+        self.assertQuerysetEqual(
+            qs=resp.context['tasks'],
+            values=task_qs,
+            ordered=False
+        )
