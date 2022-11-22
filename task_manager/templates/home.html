@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="card my-4">
+  <div class="card-body p-5 bg-light">
+    <div class="display-4">{% translate 'Менеджер задач' %}</div>
+    <p class="lead">
+      {% translate 'Это система управления задачами. Она позволяет ставить задачи, назначать исполнителей и изменять их статусы. Для работы с системой требуется регистрация и аутентификация.' %}
+    </p>
+    <hr>
+    <a class="btn btn-primary btn-lg" target="_blank" href="https://github.com/stigsanek/python-project-52">
+      {% translate 'Исходный код' %}
+    </a>
+  </div>
+</div>
+{% endblock %}

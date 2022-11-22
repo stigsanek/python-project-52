@@ -1,6 +1,17 @@
 run:
 	poetry run python manage.py runserver
 
+locale-make:
+	poetry run python manage.py makemessages -l en
+	poetry run python manage.py compilemessages
+
+migrate:
+	poetry run python manage.py makemigrations
+	poetry run python manage.py migrate
+
+createsuperuser:
+	poetry run python manage.py createsuperuser
+
 install:
 	poetry install
 
@@ -10,11 +21,8 @@ build:
 publish:
 	poetry publish --dry-run
 
-package-install:
-	python3 -m pip install --user dist/*.whl
-
 lint:
-	poetry run flake8 task_manager tests
+	poetry run flake8 task_manager
 
 test:
 	poetry run pytest

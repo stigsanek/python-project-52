@@ -145,3 +145,5 @@ cython_debug/
 # Other
 .DS_Store
 Thumbs.db
+
+!django.mo

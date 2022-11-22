@@ -1,0 +1,44 @@
+[
+  {
+    "model": "tasks.task",
+    "pk": 1,
+    "fields": {
+      "name": "Deploy app",
+      "description": "Deploy app",
+      "status": 1,
+      "author": 1,
+      "executor": 1,
+      "created_at": "2022-11-21T17:32:48.574Z",
+      "updated_at": "2022-11-21T17:33:14.135Z"
+    }
+  },
+  {
+    "model": "tasks.task",
+    "pk": 2,
+    "fields": {
+      "name": "Fix bug",
+      "description": "Fix bug",
+      "status": 3,
+      "author": 1,
+      "executor": 1,
+      "created_at": "2022-11-21T17:33:48.574Z",
+      "updated_at": "2022-11-21T17:34:14.135Z"
+    }
+  },
+  {
+    "model": "tasks.tasklabel",
+    "pk": 1,
+    "fields": {
+      "task": 1,
+      "label": 1
+    }
+  },
+  {
+    "model": "tasks.tasklabel",
+    "pk": 2,
+    "fields": {
+      "task": 2,
+      "label": 3
+    }
+  }
+]
