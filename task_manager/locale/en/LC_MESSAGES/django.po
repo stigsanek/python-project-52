@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-22 11:37+0400\n"
+"POT-Creation-Date: 2022-11-22 14:36+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: .\task_manager\labels\apps.py:8 .\task_manager\labels\models.py:24
 #: .\task_manager\tasks\models.py:44
 msgid "метки"
@@ -182,9 +183,10 @@ msgid ""
 "Это система управления задачами. Она позволяет ставить задачи, назначать "
 "исполнителей и изменять их статусы. Для работы с системой требуется "
 "регистрация и аутентификация."
-msgstr "It's a task management system. It allows you to set tasks, assign "
-"It allows you to assign tasks and change their statuses. "
-"To work with the system requires registration and authentication."
+msgstr ""
+"It's a task management system. It allows you to set tasks, assign It allows "
+"you to assign tasks and change their statuses. To work with the system "
+"requires registration and authentication."
 
 #: .\task_manager\templates\home.html:13
 msgid "Исходный код"
@@ -337,6 +339,10 @@ msgstr "Sign in"
 #: .\task_manager\templates\users\update.html:6
 msgid "Изменение пользователя"
 msgstr "Changing user"
+
+#: .\task_manager\users\apps.py:8
+msgid "пользователи"
+msgstr "users"
 
 #: .\task_manager\users\views.py:26
 msgid "Вы залогинены"

@@ -1,6 +1,6 @@
 [
   {
-    "model": "auth.user",
+    "model": "users.appuser",
     "pk": 1,
     "fields": {
       "password": "pbkdf2_sha256$390000$IxWYVFRcGpK05sFU5uOBt0$Zw3vbwRABOZr7qceKGSLXbT3e47JQLjIoHJN/kVdJUw=",
@@ -18,7 +18,7 @@
     }
   },
   {
-    "model": "auth.user",
+    "model": "users.appuser",
     "pk": 2,
     "fields": {
       "password": "pbkdf2_sha256$390000$9nA4VXIDSsMdhypMptTBrh$UrF6EGo5/lJ2TnUwBzantbRpDFzQhvMnIeVlmS466Jw=",

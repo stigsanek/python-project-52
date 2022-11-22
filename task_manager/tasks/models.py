@@ -1,9 +1,9 @@
-from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from task_manager.labels.models import Label
 from task_manager.statuses.models import Status
+from task_manager.users.models import AppUser
 
 
 class Task(models.Model):
@@ -22,13 +22,13 @@ class Task(models.Model):
         verbose_name=_('статус')
     )
     author = models.ForeignKey(
-        to=User,
+        to=AppUser,
         on_delete=models.PROTECT,
         related_name='author_tasks',
         verbose_name=_('автор')
     )
     executor = models.ForeignKey(
-        to=User,
+        to=AppUser,
         on_delete=models.PROTECT,
         related_name='executor_tasks',
         null=True,

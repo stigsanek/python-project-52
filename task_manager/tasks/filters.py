@@ -1,5 +1,4 @@
 import django_filters
-from django.contrib.auth.models import User
 from django.db.models import Value
 from django.db.models.functions import Concat
 from django.forms import CheckboxInput
@@ -7,6 +6,7 @@ from django.utils.translation import gettext_lazy as _
 
 from task_manager.labels.models import Label
 from task_manager.statuses.models import Status
+from task_manager.users.models import AppUser
 
 
 class TaskFilter(django_filters.FilterSet):
@@ -15,7 +15,7 @@ class TaskFilter(django_filters.FilterSet):
         choices=Status.objects.values_list('id', 'name').order_by('id')
     )
     executor = django_filters.ChoiceFilter(
-        choices=User.objects.values_list(
+        choices=AppUser.objects.values_list(
             'id', Concat('first_name', Value(' '), 'last_name')
         ).order_by('id')
     )

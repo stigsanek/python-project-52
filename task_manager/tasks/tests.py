@@ -1,8 +1,8 @@
-from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
 
 from task_manager.tasks.models import Task
+from task_manager.users.models import AppUser
 
 
 class TestTasks(TestCase):
@@ -10,8 +10,8 @@ class TestTasks(TestCase):
 
     def setUp(self):
         self.task = Task.objects.get(pk=1)
-        self.first_user = User.objects.get(pk=1)
-        self.second_user = User.objects.get(pk=2)
+        self.first_user = AppUser.objects.get(pk=1)
+        self.second_user = AppUser.objects.get(pk=2)
 
     def test_list(self):
         """Test for task list page"""

@@ -1,6 +1,7 @@
-from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
+
+from task_manager.users.models import AppUser
 
 FAKE_PASSWORD = 'Fake_pass1!2@'
 
@@ -9,8 +10,8 @@ class TestUsers(TestCase):
     fixtures = ['users.json', 'statuses.json', 'labels.json', 'tasks.json']
 
     def setUp(self):
-        self.first_user = User.objects.get(pk=1)
-        self.second_user = User.objects.get(pk=2)
+        self.first_user = AppUser.objects.get(pk=1)
+        self.second_user = AppUser.objects.get(pk=2)
 
     def test_list(self):
         """Test for user list page"""
@@ -19,7 +20,7 @@ class TestUsers(TestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertQuerysetEqual(
             qs=resp.context['users'],
-            values=User.objects.all(),
+            values=AppUser.objects.all(),
             ordered=False
         )
 
@@ -62,7 +63,7 @@ class TestUsers(TestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertContains(resp, 'Пользователь успешно зарегистрирован')
         self.assertTrue(
-            User.objects.filter(username='test').exists()
+            AppUser.objects.filter(username='test').exists()
         )
 
     def test_update(self):
@@ -92,7 +93,7 @@ class TestUsers(TestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertContains(resp, 'Пользователь успешно изменён')
         self.assertTrue(
-            User.objects.filter(username='test').exists()
+            AppUser.objects.filter(username='test').exists()
         )
 
     def test_delete(self):
@@ -115,8 +116,8 @@ class TestUsers(TestCase):
         self.assertContains(resp, 'Пользователь успешно удалён')
         self.assertContains(resp, 'Вход')
 
-        with self.assertRaises(User.DoesNotExist):
-            User.objects.get(pk=self.second_user.id)
+        with self.assertRaises(AppUser.DoesNotExist):
+            AppUser.objects.get(pk=self.second_user.id)
 
     def test_delete_with_tasks(self):
         """Test for delete user with tasks"""
@@ -129,5 +130,5 @@ class TestUsers(TestCase):
             'Невозможно удалить пользователя, потому что он используется'
         )
         self.assertTrue(
-            User.objects.filter(pk=self.first_user.id).exists()
+            AppUser.objects.filter(pk=self.first_user.id).exists()
         )

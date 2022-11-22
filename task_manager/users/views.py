@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages import info
 from django.contrib.messages.views import SuccessMessageMixin
@@ -10,18 +9,19 @@ from task_manager.mixins import (
     CheckSignInMixin, ChangeUserMixin, DeleteRelatedEntityMixin
 )
 from task_manager.users.forms import UserForm
+from task_manager.users.models import AppUser
 
 
 class ListUserView(ListView):
     """All users"""
-    model = User
+    model = AppUser
     template_name = 'users/list.html'
     context_object_name = 'users'
 
 
 class SignInView(SuccessMessageMixin, LoginView):
     """Sign in user"""
-    model = User
+    model = AppUser
     template_name = 'users/sign_in.html'
     success_message = _('Вы залогинены')
     next_page = reverse_lazy('home')
@@ -39,7 +39,7 @@ class SignOutView(SuccessMessageMixin, LogoutView):
 
 class CreateUserView(SuccessMessageMixin, CreateView):
     """Create user"""
-    model = User
+    model = AppUser
     form_class = UserForm
     template_name = 'users/create.html'
     success_message = _('Пользователь успешно зарегистрирован')
@@ -53,7 +53,7 @@ class UpdateUserView(
     UpdateView
 ):
     """Update user"""
-    model = User
+    model = AppUser
     form_class = UserForm
     template_name = 'users/update.html'
     success_message = _('Пользователь успешно изменён')
@@ -67,7 +67,7 @@ class DeleteUserView(
     DeleteView
 ):
     """Delete user"""
-    model = User
+    model = AppUser
     template_name = 'users/delete.html'
     success_message = _('Пользователь успешно удалён')
     error_message = _(

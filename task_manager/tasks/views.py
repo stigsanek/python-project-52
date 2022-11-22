@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.contrib.messages import error
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
@@ -11,6 +10,7 @@ from task_manager.mixins import CheckSignInMixin
 from task_manager.tasks.filters import TaskFilter
 from task_manager.tasks.forms import TaskForm
 from task_manager.tasks.models import Task
+from task_manager.users.models import AppUser
 
 
 class ListTaskView(CheckSignInMixin, FilterView):
@@ -36,7 +36,7 @@ class CreateTaskView(CheckSignInMixin, SuccessMessageMixin, CreateView):
     success_url = reverse_lazy('tasks:list')
 
     def form_valid(self, form):
-        author = User.objects.get(pk=self.request.user.pk)
+        author = AppUser.objects.get(pk=self.request.user.pk)
         form.instance.author = author
         return super().form_valid(form)
 

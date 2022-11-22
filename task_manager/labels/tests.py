@@ -1,15 +1,15 @@
-from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
 
 from task_manager.labels.models import Label
+from task_manager.users.models import AppUser
 
 
 class TestLabels(TestCase):
     fixtures = ['users.json', 'statuses.json', 'labels.json', 'tasks.json']
 
     def setUp(self):
-        self.user = User.objects.get(pk=1)
+        self.user = AppUser.objects.get(pk=1)
         self.first_label = Label.objects.get(pk=1)
         self.second_label = Label.objects.get(pk=2)
 
