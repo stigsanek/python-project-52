@@ -12,24 +12,25 @@ from task_manager.statuses.models import Status
 class TaskFilter(django_filters.FilterSet):
     """Filter for Task model"""
     status = django_filters.ChoiceFilter(
-        choices=Status.objects.values_list('id', 'name').all()
+        choices=Status.objects.values_list('id', 'name').order_by('id')
     )
     executor = django_filters.ChoiceFilter(
         choices=User.objects.values_list(
             'id', Concat('first_name', Value(' '), 'last_name')
-        ).all()
+        ).order_by('id')
     )
-    labels = django_filters.ChoiceFilter(
-        choices=Label.objects.values_list('id', 'name').all()
+    label = django_filters.ChoiceFilter(
+        label=_('Метка'),
+        choices=Label.objects.values_list('id', 'name').order_by('id'),
+        field_name='labels'
     )
-    my_task = django_filters.BooleanFilter(
+    self_tasks = django_filters.BooleanFilter(
         label=_('Только свои задачи'),
         widget=CheckboxInput(),
-        method='filter_my_tasks'
+        method='filter_self_tasks'
     )
 
-    def filter_my_tasks(self, queryset, name, value):
+    def filter_self_tasks(self, qs, name, value):
         if value:
-            queryset = queryset.filter(author=self.request.user)
-
-        return queryset
+            qs = qs.filter(author=self.request.user).order_by('id')
+        return qs
