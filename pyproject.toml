@@ -1,9 +1,9 @@
 [tool.poetry]
-name = "hexlet-code"
+name = "task-manager"
 version = "0.1.0"
 description = "Task management system"
 authors = ["stigsanek <stigsanek@yandex.ru>"]
-repository = "https://github.com/stigsanek/python-project-52"
+repository = "https://github.com/stigsanek/task-manager"
 readme = "README.md"
 packages = [{include = "task_manager"}]
 
