@@ -6,7 +6,7 @@ pip install poetry -U
 
 # install dependencies
 poetry install --only main
-poetry add gunicorn
+poetry add psycopg2-binary gunicorn
 
 # migrations
 poetry run python manage.py migrate
