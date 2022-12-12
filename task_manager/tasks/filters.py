@@ -3,7 +3,6 @@ from django.db.models import Value
 from django.db.models.functions import Concat
 from django.forms import CheckboxInput
 from django.utils.translation import gettext_lazy as _
-
 from task_manager.labels.models import Label
 from task_manager.statuses.models import Status
 from task_manager.users.models import AppUser

@@ -17,7 +17,7 @@
       "updated_at": "2022-11-21T17:30:25.376Z"
     }
   },
-    {
+  {
     "model": "statuses.status",
     "pk": 3,
     "fields": {

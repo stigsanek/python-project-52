@@ -1,6 +1,5 @@
 from django.test import TestCase
 from django.urls import reverse
-
 from task_manager.users.models import AppUser
 
 FAKE_PASSWORD = 'Fake_pass1!2@'
