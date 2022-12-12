@@ -11,6 +11,8 @@ on:
 jobs:
   build:
     env:
+      ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
       SECRET_KEY: ${{ secrets.SECRET_KEY }}
     runs-on: ubuntu-latest
     strategy:
