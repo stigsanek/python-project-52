@@ -5,7 +5,6 @@ description = "Task management system"
 authors = ["stigsanek <stigsanek@yandex.ru>"]
 repository = "https://github.com/stigsanek/task-manager"
 readme = "README.md"
-packages = [{include = "task_manager"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -17,6 +16,7 @@ python-dotenv = "^0.21.0"
 
 
 [tool.poetry.group.dev.dependencies]
+autopep8 = "^2.0.0"
 flake8 = "^5.0.4"
 pytest = "^7.2.0"
 pytest-cov = "^4.0.0"
