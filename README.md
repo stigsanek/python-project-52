@@ -67,7 +67,7 @@ DEBUG=True
 
 #### Run
 
-Run database migrations
+* Run database migrations:
 
 ```bash
 >> python manage.py migrate
@@ -80,7 +80,7 @@ Run database migrations
  Applying tasks.0002_initial... OK
 ```
 
-Run application
+* Run application:
 
 ```bash
 >> python manage.py runserver
@@ -95,7 +95,7 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CTRL-BREAK.
 ```
 
-Open [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser.
+* Open [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser.
 
 ### 2. Docker
 
