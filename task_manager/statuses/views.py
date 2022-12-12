@@ -1,8 +1,7 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 from task_manager.mixins import CheckSignInMixin, DeleteRelatedEntityMixin
 from task_manager.statuses.forms import StatusForm
 from task_manager.statuses.models import Status
