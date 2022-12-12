@@ -1,7 +1,7 @@
 run:
 	poetry run python manage.py runserver
 
-locale-make:
+locale:
 	poetry run python manage.py makemessages -l en
 	poetry run python manage.py compilemessages
 
@@ -14,12 +14,6 @@ createsuperuser:
 
 install:
 	poetry install
-
-build:
-	poetry build
-
-publish:
-	poetry publish --dry-run
 
 lint:
 	poetry run flake8 task_manager
