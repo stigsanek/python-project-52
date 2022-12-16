@@ -1,6 +1,6 @@
 # Task Manager
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/stigsanek/task-manager/python-ci)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/stigsanek/task-manager/pyci.yml?branch=main)
 ![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/stigsanek/task-manager)
 ![Code Climate coverage](https://img.shields.io/codeclimate/coverage/stigsanek/task-manager)
 
