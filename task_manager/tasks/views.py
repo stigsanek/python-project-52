@@ -14,7 +14,7 @@ from task_manager.users.models import AppUser
 
 class ListTaskView(CheckSignInMixin, FilterView):
     """All tasks"""
-    model = Task
+    queryset = Task.objects.select_related('author', 'executor', 'status')
     template_name = 'tasks/list.html'
     context_object_name = 'tasks'
     filterset_class = TaskFilter
@@ -22,7 +22,7 @@ class ListTaskView(CheckSignInMixin, FilterView):
 
 class DetailTaskView(CheckSignInMixin, DetailView):
     """Detail task"""
-    model = Task
+    queryset = Task.objects.select_related('author', 'executor', 'status')
     template_name = 'tasks/detail.html'
 
 
